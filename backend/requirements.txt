@@ -4,3 +4,5 @@ opencv-python-headless
 pillow
 mediapipe
 numpy
+gunicorn
+
