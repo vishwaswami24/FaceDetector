@@ -13,7 +13,7 @@ function App() {
   const handleImageCapture = async (imageData) => {
     setLoading(true)
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+      const apiUrl = import.meta.env.VITE_API_URL
       const response = await fetch(`${apiUrl}/detect`, {
 
         method: 'POST',
