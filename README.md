@@ -13,9 +13,7 @@
   <b>A full-stack face detection application with real-time camera and image upload support</b>
 </p>
 
-<p align="center">
-  <img src="demo.png" alt="Face Detection Demo" width="600">
-</p>
+<img width="1900" height="926" alt="image" src="https://github.com/user-attachments/assets/62005231-4d4f-4893-8675-482136e8353d" />
 
 ## Features
 
