@@ -1,12 +1,10 @@
 # Use a Python base image that includes building utilities
 FROM python:3.11-slim
 
-# Install system graphics libraries required by Mediapipe/OpenCV
-RUN apt-get update && apt-get install -y \
-    libgles2 \
-    libegl1 \
-    libgl1 \
-    libgl1-mesa-glx \
+# Install system graphics libraries via a highly compatible package list
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libgl1-mesa-dev \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
