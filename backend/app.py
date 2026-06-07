@@ -11,7 +11,7 @@ from mediapipe.tasks.python.core.base_options import BaseOptions
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://facedetection123.netlify.app"])
 
 # Initialize MediaPipe Face Landmarker
 # Use local model file
