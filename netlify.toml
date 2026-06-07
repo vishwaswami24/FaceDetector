@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "frontend/dist"
+  publish = "frontend"
 
 # Vite SPA fallback (safe for this app; no routes besides /)
 [[redirects]]
