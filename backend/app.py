@@ -15,7 +15,7 @@ CORS(app)
 
 # Initialize MediaPipe Face Landmarker
 # Use local model file
-model_path = os.path.join(os.path.dirname(__file__), 'face_landmarker.task')
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'face_landmarker.task')
 
 # Create FaceLandmarker options
 base_options = BaseOptions(model_asset_path=model_path)
