@@ -1,28 +1,27 @@
-# syntax=docker/dockerfile:1
+# Use a Python base image that includes building utilities
 FROM python:3.11-slim
 
-# System deps for OpenCV/Pillow
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install system graphics libraries required by Mediapipe/OpenCV
+RUN apt-get update && apt-get install -y \
+    libgles2 \
+    libegl1 \
+    libgl1 \
+    libgl1-mesa-glx \
     libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender1 \
     && rm -rf /var/lib/apt/lists/*
 
+# Set up the working directory inside the container
 WORKDIR /app
 
-# Install python deps
-COPY requirements.txt ./requirements.txt
+# Copy and install Python requirements
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code + mediapipe model asset
+# Copy the rest of your application code
 COPY . .
 
-# Render/containers set PORT; fall back to 5000
-ENV PORT=5000
+# Expose the dynamic port Render uses
+EXPOSE 10000
 
-EXPOSE 5000
-
-# Gunicorn runs Flask app:app
-CMD ["sh", "-c", "gunicorn -b 0.0.0.0:${PORT:-5000} app:app"]
-
+# Start Gunicorn and bind it to the assigned port
+CMD gunicorn -b 0.0.0.0:$PORT app:app
